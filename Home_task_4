@@ -124,35 +124,9 @@ plates_list = ['HH9901CC', 'CA9150WC', 'BH7144WB', 'AI7665KU', 'AI8045DS', 'HH12
                'AI7453WB', 'HH7030IC', 'HH8046BN', 'AI6783OP', 'HH0151SV', 'AI5535VY', 'AI3313ON', 'AI5701WH',
                'CA5050SB', 'HH9269VV', 'AI0045RJ', 'HH8609RB']
 
-entered_plate = input("Enter plate number: ")
-entered_plate = entered_plate.upper()
-
-number_of_elements = len(plates_list)
-print("Number of elements in plates: ", number_of_elements)
-
-number_of_unique_elements = len(set(plates_list))
-print("Number of unique elements in plates: ", number_of_unique_elements)
-
-if entered_plate in plates_list:
-    print(entered_plate, "is in the plate list")
-else:
-    print(entered_plate, "is not in the plate list")
-
-first_number = entered_plate[2]
-second_number = entered_plate[3]
-third_number = entered_plate[4]
-fourth_number = entered_plate[5]
-numbers_sum = int(first_number) + int(second_number) + int(third_number) + int(fourth_number)
-
-print('Sum of numbers in entered plate number: ', numbers_sum)
-
-
-a = input("Enter plate number:")
-
+c = input("Enter plate number:").upper().strip()
 
 def check():
-    b = a.strip() # этой строкой убрал пробелы, если пользователь начал ввод номера с пробела или поставил пробел в конце
-    c = b.upper()
     if len(c) == 8:
         list(c)
         data_1 = c[0]
@@ -165,19 +139,25 @@ def check():
         data_8 = c[7]
         global data_all
         data_all = [data_1 + data_2, data_3, data_4, data_5, data_6, data_7 + data_8]
-        print(data_all)
+        return data_all
     else:
         print(False)
-        exit() # поставил выход из программы если длина введенного номера менее или более нужного количества символов, что б не отробатовала следующая функция.
-
+        exit()
 
 check()
 
+number_of_unique_elements = len(set(plates_list))
+print("Number of unique elements in plates: ", number_of_unique_elements)
+
+if c in plates_list:
+    print(c, "is in the plate list")
+else:
+    print(c, "is not in the plate list")
 
 def summ(data_all):
     digit = data_all[1:5]
     digit = list(map(int, digit))
-    print(f"Summ of number digits: {sum(digit)}")
+    return (f"Summ of number digits: {sum(digit)}")
 
 
-summ(data_all)
+print(summ(data_all))
