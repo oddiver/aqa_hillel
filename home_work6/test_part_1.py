@@ -4,15 +4,20 @@ import requests
 
 def test_one():
     response = requests.get("https://google.com")
+    assert response.status_code == 200
     print(response.status_code)
 
 def test_two():
     response = requests.get("https://google.com")
+    assert response.status_code == 200
     print(response.text)
 
 def test_tree():
-    response = requests.options("https://google.com")
-    print(response.headers['Allow'])
+    response = requests.get("https://google.com")
+    response.headers
+    assert response.status_code == 200
+    print(response.status_code)
+    print(response.headers)
 
 def test_four():
     response = requests.get("https://google.com")
@@ -20,4 +25,6 @@ def test_four():
 
 def test_five():
     response = requests.get("https://google.com")
-    assert response.status_code == 300
+    assert response.status_code == 404
+
+
